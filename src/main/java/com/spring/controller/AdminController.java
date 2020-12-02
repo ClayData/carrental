@@ -30,10 +30,10 @@ public class AdminController {
 		
 		if(isValid == false) {
 			System.out.println("false");
-			return "login";
+			return "adminlogin";
 		} else {
 			System.out.println("true");
-			return "savecar";
+			return "/savecar";
 		}
 	}
 	

@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CAR_TABLE")
+@Table(name="CAR")
 public class Car {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
@@ -23,7 +23,7 @@ public class Car {
 	@Column(name="CAR_YEARMADE")
 	private int yearMade;
 	@Column(name="CAR_ISRSERVED")
-	private boolean isReserved;
+	private String isReserved;
 	
 	public int getId() {
 		return id;
@@ -49,10 +49,10 @@ public class Car {
 	public void setYearMade(int yearMade) {
 		this.yearMade = yearMade;
 	}
-	public boolean isReserved() {
+	public String isReserved() {
 		return isReserved;
 	}
-	public void setReserved(boolean isReserved) {
+	public void setReserved(String isReserved) {
 		this.isReserved = isReserved;
 	}
 	@Override

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaQuery;
 
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,9 +22,19 @@ public class CarDAOImpl extends AbstractDAO implements CarDAO {
 
 	@Override
 	public List<Car> fetchCar() {
-		CriteriaQuery<Car> criteria = getSession().getCriteriaBuilder().createQuery(Car.class);
-		criteria.select(criteria.from(Car.class));
-		return getSession().createQuery(criteria).getResultList();
+//		CriteriaQuery<Car> criteria = getSession().getCriteriaBuilder().createQuery(Car.class);
+//		criteria.select(criteria.from(Car.class));
+//		return getSession().createQuery(criteria).getResultList();
+		Session currentSession = getSession();
+		
+		// create a query  ... sort by last name
+		Query<Car> theQuery = 
+				currentSession.createQuery("from CAR",
+											Car.class);
+		
+		// execute query and get result list
+		List<Car> cars = theQuery.getResultList();
+		return cars;
 	}
 
 	@Override

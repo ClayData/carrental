@@ -24,28 +24,30 @@ public class CarController {
 	@Autowired
 	CarService carService;
 	
-	@RequestMapping(value="/go", method=RequestMethod.GET)
-	public String go() {
-		return "savecar";
-	}
+//	@RequestMapping(value="/go", method=RequestMethod.GET)
+//	public String go() {
+//		return "savecar";
+//	}
 
-	@PostMapping(value = "/savecar")
+	@RequestMapping(value = "/savecar", method=RequestMethod.POST)
 	public String saveCar(@ModelAttribute("carInfo") Car carInfo, BindingResult bindingResult,Model model) {
 		carService.saveCar(carInfo);
 		return "redirect:/fetchcar";
 	}
 	
-	@RequestMapping(value="/fetchcar", method=RequestMethod.GET)
+	@RequestMapping(value="/showcar")
 	public String getCar(Model model) {
 		List<Car> car = carService.fetchCar();
-		model.addAttribute("carList", car);
-		return "welcome";
+		model.addAttribute("cars", car);
+		return "savecar";
 	}
 	
-	@RequestMapping(value="/showcar", method=RequestMethod.GET)
-	public String showCar() {
-		return "showcar";
-	}
+//	@RequestMapping(value="/showcar", method=RequestMethod.GET)
+//	public String showCar(Model model) {
+//		List<Car> car = carService.fetchCar();
+//		model.addAttribute("carList", car);
+//		return "showcar";
+//	}
 	
 	@RequestMapping(value="/delete", method = RequestMethod.DELETE)
 	public String deleteCustomer(@RequestParam("carId") Car car) {

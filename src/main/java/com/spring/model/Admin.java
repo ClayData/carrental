@@ -17,7 +17,7 @@ public class Admin {
 	private int id;
 	
 	@Column(name="ADMIN_EMAIL")
-	private String admin_email;
+	private String email;
 	
 	@Column(name="USER_NAME")
 	private String name;
@@ -33,12 +33,12 @@ public class Admin {
 		this.id = id;
 	}
 
-	public String getAdmin_email() {
-		return admin_email;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setAdmin_email(String admin_email) {
-		this.admin_email = admin_email;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getName() {
@@ -59,7 +59,7 @@ public class Admin {
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", admin_email=" + admin_email + ", name=" + name + ", password=" + password + "]";
+		return "Admin [id=" + id + ", email=" + email + ", name=" + name + ", password=" + password + "]";
 	}
 	
 }

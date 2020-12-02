@@ -9,17 +9,27 @@
 <h1>Save a Car</h1>
 </head>
 <body>
-	 <c:forEach var="car" items="${carList}">
-	${car.id}
-	${car.maker}
-	${car.model}
-	${car.yearmade}
-	${car.isReserved}
-	<c:url var="deleteLink" value="/delete">
-		<c:param name="carId" value value="${car.id}"/>
-	</c:url>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>MAKER</th>
+			<th>MODEL</th>
+			<th>YEARMADE</th>
+			<th>RESERVED?</th>
+		</tr>
+		 <c:forEach var="car" items="${cars}">
+			<td> ${car.id} </td>
+			<td> ${car.maker} </td>
+			<td> ${car.model} </td>
+			<td> ${car.yearmade} </td>
+			<td> ${car.isReserved}</td>
+ 		<c:url var="deleteLink" value="/delete">
+			<c:param name="carId" value="${car.id}"/>
+		</c:url>
+		</c:forEach> 
+	</table>
 	<br><br>	
-</c:forEach> 
+
 	
 	<br />
 	<f:form action="savecar" method="post" modelAttribute="carAttribute">
