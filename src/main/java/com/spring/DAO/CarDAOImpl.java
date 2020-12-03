@@ -2,7 +2,10 @@ package com.spring.DAO;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -25,16 +28,23 @@ public class CarDAOImpl extends AbstractDAO implements CarDAO {
 //		CriteriaQuery<Car> criteria = getSession().getCriteriaBuilder().createQuery(Car.class);
 //		criteria.select(criteria.from(Car.class));
 //		return getSession().createQuery(criteria).getResultList();
-		Session currentSession = getSession();
+		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+		CriteriaQuery<Car> query = builder.createQuery(Car.class);
+		Root<Car> carRoot = query.from(Car.class);
+		CriteriaQuery<Car> all = query.select(carRoot);
+		TypedQuery<Car> allQuery = getSession().createQuery(all);
+		
+		return allQuery.getResultList();
+//		Session currentSession = getSession();
 		
 		// create a query  ... sort by last name
-		Query<Car> theQuery = 
-				currentSession.createQuery("from CAR",
-											Car.class);
+//		Query<Car> theQuery = 
+//				currentSession.createQuery("from CAR",
+//											Car.class);
 		
 		// execute query and get result list
-		List<Car> cars = theQuery.getResultList();
-		return cars;
+//		List<Car> cars = theQuery.getResultList();
+//		return cars;
 	}
 
 	@Override

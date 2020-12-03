@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.model.Car;
@@ -29,18 +30,18 @@ public class CarController {
 //		return "savecar";
 //	}
 
-	@RequestMapping(value = "/savecar", method=RequestMethod.POST)
-	public String saveCar(@ModelAttribute("carInfo") Car carInfo, BindingResult bindingResult,Model model) {
-		carService.saveCar(carInfo);
-		return "redirect:/fetchcar";
-	}
+//	@RequestMapping(value = "/addcar", method=RequestMethod.POST)
+//	public String saveCar(@ModelAttribute("carInfo") Car carInfo, BindingResult bindingResult,Model model) {
+//		carService.saveCar(carInfo);
+//		return "redirect:/fetchcar";
+//	}
 	
-	@RequestMapping(value="/showcar")
-	public String getCar(Model model) {
-		List<Car> car = carService.fetchCar();
-		model.addAttribute("cars", car);
-		return "savecar";
-	}
+//	@RequestMapping(value="/list", method=RequestMethod.GET)
+//	public String getCar(Model model) {
+//		List<Car> car = carService.fetchCar();
+//		model.addAttribute("cars", car);
+//		return "savecar";
+//	}
 	
 //	@RequestMapping(value="/showcar", method=RequestMethod.GET)
 //	public String showCar(Model model) {
@@ -49,11 +50,11 @@ public class CarController {
 //		return "showcar";
 //	}
 	
-	@RequestMapping(value="/delete", method = RequestMethod.DELETE)
-	public String deleteCustomer(@RequestParam("carId") Car car) {
-		carService.deleteCar(car);
-		return "redirect:/savecar";
-	}
+//	@RequestMapping(value="/delete", method = RequestMethod.DELETE)
+//	public String deleteCustomer(@RequestParam("carId") Car car) {
+//		carService.deleteCar(car);
+//		return "redirect:/savecar";
+//	}
 	
 }
 

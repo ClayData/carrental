@@ -28,11 +28,9 @@
 		</c:url>
 		</c:forEach> 
 	</table>
-	<br><br>	
-
-	
+	<br>
 	<br />
-	<f:form action="savecar" method="post" modelAttribute="carAttribute">
+	<f:form action="addcar" method="post" modelAttribute="carAttribute">
 		<div>
 			<input type="hidden" name="id" value="1" />
 			<p>
@@ -56,6 +54,6 @@
 			<input type="submit" value="add car" />
 		</div>
 	</f:form>
-	<a href="/CarRental/login"><h2>Logout</h2></a>
+	<a href="/CarRental/"><h2>Logout</h2></a>
 </body>
 </html>

@@ -14,15 +14,15 @@ import javax.persistence.Table;
 public class Car {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	@Column(name="CAR_ID")
+	@Column(name="car_id")
 	private int id;
-	@Column(name="CAR_MAKER")
+	@Column(name="maker")
 	private String maker;
-	@Column(name="CAR_MODEL")
+	@Column(name="model")
 	private String model;
-	@Column(name="CAR_YEARMADE")
+	@Column(name="year_made")
 	private int yearMade;
-	@Column(name="CAR_ISRSERVED")
+	@Column(name="isReserved")
 	private String isReserved;
 	
 	public int getId() {
