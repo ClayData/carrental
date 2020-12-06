@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,9 +48,16 @@ public class AdminController {
 	
 	@RequestMapping(value="/savecar", method=RequestMethod.GET)
 	public String getCar(Model model) {
+		System.out.println("I ran");
 		List<Car> cars = carService.fetchCar();
 		model.addAttribute("cars", cars);
 		return "savecar";
+	}
+	
+	@RequestMapping(value = "/addcar", method=RequestMethod.POST)
+	public String saveCar(@ModelAttribute("carInfo") Car carInfo, BindingResult bindingResult,Model model) {
+		carService.saveCar(carInfo);
+		return "redirect:/savecar";
 	}
 	
 	@RequestMapping(value="/delete", method = RequestMethod.DELETE)

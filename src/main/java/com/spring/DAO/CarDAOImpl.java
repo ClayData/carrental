@@ -25,16 +25,18 @@ public class CarDAOImpl extends AbstractDAO implements CarDAO {
 
 	@Override
 	public List<Car> fetchCar() {
-//		CriteriaQuery<Car> criteria = getSession().getCriteriaBuilder().createQuery(Car.class);
-//		criteria.select(criteria.from(Car.class));
-//		return getSession().createQuery(criteria).getResultList();
-		CriteriaBuilder builder = getSession().getCriteriaBuilder();
-		CriteriaQuery<Car> query = builder.createQuery(Car.class);
-		Root<Car> carRoot = query.from(Car.class);
-		CriteriaQuery<Car> all = query.select(carRoot);
-		TypedQuery<Car> allQuery = getSession().createQuery(all);
-		
-		return allQuery.getResultList();
+		CriteriaQuery<Car> criteria = getSession().getCriteriaBuilder().createQuery(Car.class);
+		criteria.select(criteria.from(Car.class));
+		List<Car>cars = getSession().createQuery(criteria).getResultList();
+		System.out.println(cars);
+		return cars;
+//		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+//		CriteriaQuery<Car> query = builder.createQuery(Car.class);
+//		Root<Car> carRoot = query.from(Car.class);
+//		CriteriaQuery<Car> all = query.select(carRoot);
+//		TypedQuery<Car> allQuery = getSession().createQuery(all);
+//		
+//		return allQuery.getResultList();
 //		Session currentSession = getSession();
 		
 		// create a query  ... sort by last name

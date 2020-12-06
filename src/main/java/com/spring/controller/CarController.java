@@ -30,11 +30,7 @@ public class CarController {
 //		return "savecar";
 //	}
 
-//	@RequestMapping(value = "/addcar", method=RequestMethod.POST)
-//	public String saveCar(@ModelAttribute("carInfo") Car carInfo, BindingResult bindingResult,Model model) {
-//		carService.saveCar(carInfo);
-//		return "redirect:/fetchcar";
-//	}
+	
 	
 //	@RequestMapping(value="/list", method=RequestMethod.GET)
 //	public String getCar(Model model) {
@@ -50,12 +46,12 @@ public class CarController {
 //		return "showcar";
 //	}
 	
-//	@RequestMapping(value="/delete", method = RequestMethod.DELETE)
+
+//		@RequestMapping(value="/delete", method = RequestMethod.DELETE)
 //	public String deleteCustomer(@RequestParam("carId") Car car) {
 //		carService.deleteCar(car);
 //		return "redirect:/savecar";
 //	}
-	
 }
 
 

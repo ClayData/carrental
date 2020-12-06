@@ -1,6 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +15,14 @@
 			<th>MAKER</th>
 			<th>MODEL</th>
 			<th>YEARMADE</th>
-			<th>RESERVED?</th>
 		</tr>
 		 <c:forEach var="car" items="${cars}">
+		 <tr>
 			<td> ${car.id} </td>
 			<td> ${car.maker} </td>
 			<td> ${car.model} </td>
-			<td> ${car.yearmade} </td>
-			<td> ${car.isReserved}</td>
+			<td> ${car.yearMade} </td>
+		</tr>
  		<c:url var="deleteLink" value="/delete">
 			<c:param name="carId" value="${car.id}"/>
 		</c:url>
