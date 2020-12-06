@@ -18,12 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.model.Car;
+import com.spring.model.Reservation;
 import com.spring.service.CarService;
+import com.spring.service.ReservationService;
 
 @Controller
 public class CarController {
 	@Autowired
 	CarService carService;
+	
+//	@Autowired
+//	ReservationService resService;
 	
 //	@RequestMapping(value="/go", method=RequestMethod.GET)
 //	public String go() {
@@ -39,14 +44,19 @@ public class CarController {
 //		return "savecar";
 //	}
 	
-//	@RequestMapping(value="/showcar", method=RequestMethod.GET)
-//	public String showCar(Model model) {
-//		List<Car> car = carService.fetchCar();
-//		model.addAttribute("carList", car);
-//		return "showcar";
-//	}
+	@RequestMapping(value="/showcar", method=RequestMethod.GET)
+	public String showCar(Model model, Model theModel) {
+		System.out.println("I ran");
+		List<Car> car = carService.fetchCar();
+		model.addAttribute("cars", car);
+		Reservation res = new Reservation();
+		theModel.addAttribute("resinfo", res);
+		return "showcar";
+	}
 	
-
+	
+	
+	
 //		@RequestMapping(value="/delete", method = RequestMethod.DELETE)
 //	public String deleteCustomer(@RequestParam("carId") Car car) {
 //		carService.deleteCar(car);

@@ -3,12 +3,17 @@ package com.spring.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.model.Reservation;
 import com.spring.service.ReservationService;
+import com.spring.validator.ResValidator;
 
 @Controller
 public class ReservationController {
@@ -16,17 +21,30 @@ public class ReservationController {
 	@Autowired
 	ReservationService resService;
 	
-	@RequestMapping(value="/showRes", method=RequestMethod.GET)
-	public String showRes(Model theModel) {
-		Reservation res = new Reservation();
-		theModel.addAttribute("resinfo", res);
-		return "showcar";
+	@Autowired
+	ResValidator resValidator;
+	
+	@InitBinder
+	protected void initBinding(WebDataBinder binder) {
+		binder.addValidators(resValidator);
 	}
 	
-	@RequestMapping(value="/resForm", method = RequestMethod.POST)
-	public String saveRes(@ModelAttribute(name = "resinfo") Reservation res, Model model) {
-		resService.setReservation(res);
+//	@RequestMapping(value="/showcar", method=RequestMethod.GET)
+//	public String formRes(Model theModel) {
+//		Reservation res = new Reservation();
+//		theModel.addAttribute("resinfo", res);
+//		return "showcar";
+//	}
+	
+	@RequestMapping(value="/resForm", method=RequestMethod.POST)
+	public String createRes(@ModelAttribute("resinfo") @Validated Reservation res,BindingResult result, Model model) {
 		
-		return "showcar";
+		if(result.hasErrors()) {
+			System.out.println("invalid");
+			return "redirect:/showcar";
+		} else {
+		resService.setReservation(res);
+		return "congrats";
+		}
 	}
 }

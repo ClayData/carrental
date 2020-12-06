@@ -7,27 +7,37 @@
 <html>
 <body>
 Welcome!<br>
-Search Bar: maker, model, year of made, capacity, price --> details --> reserve page<br>
-Showing available cars with basic info, like price, capacity, pics in 2 colomns--> details --> reserve page
- <c:forEach var="car" items="${carList}">
-	${car.id}
-	${car.maker}
-	${car.model}
-	${car.yearmade}
-	${car.isReserved}
-	<br><br>	
-</c:forEach> 
+ <table>
+		<tr>
+			<th>ID</th>
+			<th>MAKER</th>
+			<th>MODEL</th>
+			<th>YEARMADE</th>
+		</tr>
+		 <c:forEach var="car" items="${cars}">
+		 <tr>
+			<td> ${car.id} </td>
+			<td> ${car.maker} </td>
+			<td> ${car.model} </td>
+			<td> ${car.yearMade} </td>
+		</tr>
+		</c:forEach> 
+	</table>
 	<h4>Reserve Car</h4>
 	<f:form action="resForm" modelAttribute="resinfo">
-		<label>Enter Car ID</label> <f:input type="text" name="carId" path="carId"/>
+		<label>Enter Car ID</label> <f:input type="text" name="carId" path="car_id"/>
+		<f:errors path="car_id" cssClass="error"/>
 		<br/>
-		<label>Enter Email</label> <f:input type="text" name="userEmail" path="userEmail"/>
+		<label>Enter Email</label> <f:input type="text" name="userEmail" path="user_email"/> 
+		<f:errors path="user_email" cssClass="error"/>
 		<br />
-		<label>Enter Pick Up</label> <f:input type="text" name="pickUp" path="pickUp"/>
+		<label>Enter Pick Up</label> <f:input type="date" name="pickUp" path="pick_up"/> <p>Format: yyyy-mm-dd</p>
+		<f:errors path="pick_up" cssClass="error"/>
 		<br />
-		<label>Enter Drop Off</label> <f:input type="text" name="dropOff" path="dropOff"/>
+		<label>Enter Drop Off</label> <f:input type="date" name="dropOff" path="drop_off"/> <p>Format:  yyyy-mm-dd</p>
+		<f:errors path="drop_off" cssClass="error"/>
 		<br />
 		<input type="submit" value="Reserve"/>
-	</f:form>
+	</f:form> 
 </body>
 </html>
