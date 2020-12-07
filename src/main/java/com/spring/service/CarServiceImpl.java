@@ -17,31 +17,44 @@ public class CarServiceImpl implements CarService {
 	@Override
 	@Transactional
 	public void saveCar(Car car) {
+		car.setReserved("no");
 		carDAO.saveCar(car);		
 	}
 
 	@Override
 	@Transactional
-	public void updateCar(Car car) {
-		carDAO.updateCar(car);		
+	public void updateCarYes(int id) {
+		carDAO.updateCarYes(id);		
 	}
 
 	@Override
 	@Transactional
-	public void deleteCar(Car car) {
-		carDAO.deleteCar(car);		
+	public void deleteCar(int id) {
+		carDAO.deleteCar(id);		
 	}
 
 	@Override
 	@Transactional
-	public List<Car> fetchCar() {
-		return carDAO.fetchCar();
+	public List<Car> fetchAllCars() {
+		return carDAO.fetchAllCars();
 	}
 
 	@Override
 	@Transactional
 	public Car fetchCarById(int id) {
 		return carDAO.fetchCarById(id);
+	}
+
+	@Override
+	public void updateCarNo(int id) {
+		carDAO.updateCarNo(id);
+		
+	}
+
+	@Override
+	public List<Car> fetchUnreserved() {
+		carDAO.fetchUnreserved();
+		return null;
 	}
 
 }

@@ -47,7 +47,7 @@ public class CarController {
 	@RequestMapping(value="/showcar", method=RequestMethod.GET)
 	public String showCar(Model model, Model theModel) {
 		System.out.println("I ran");
-		List<Car> car = carService.fetchCar();
+		List<Car> car = carService.fetchUnreserved();
 		model.addAttribute("cars", car);
 		Reservation res = new Reservation();
 		theModel.addAttribute("resinfo", res);

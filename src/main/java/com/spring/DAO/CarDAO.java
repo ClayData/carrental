@@ -6,10 +6,12 @@ import com.spring.model.Car;
 
 public interface CarDAO {
 	public void saveCar(Car car);
-	public List<Car> fetchCar();
+	public List<Car> fetchAllCars();
+	public List<Car> fetchUnreserved();
 	public Car fetchCarById(int id);
-	public void updateCar(Car car);
-	public void deleteCar(Car car);
+	public void updateCarYes(int id);
+	public void updateCarNo(int id);
+	public void deleteCar(int id);
 //	public void fetchCarByisReserved(Boolean isReserved);
 
 }

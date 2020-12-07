@@ -49,7 +49,7 @@ public class AdminController {
 	@RequestMapping(value="/savecar", method=RequestMethod.GET)
 	public String getCar(Model model) {
 		System.out.println("I ran");
-		List<Car> cars = carService.fetchCar();
+		List<Car> cars = carService.fetchAllCars();
 		model.addAttribute("cars", cars);
 		return "savecar";
 	}
@@ -61,8 +61,8 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/delete", method = RequestMethod.DELETE)
-	public String deleteCustomer(@RequestParam("carId") Car car) {
-		carService.deleteCar(car);
+	public String deleteCustomer(@RequestParam("carId") int id) {
+		carService.deleteCar(id);
 		return "redirect:/savecar";
 	}
 	

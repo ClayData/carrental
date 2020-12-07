@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.model.Reservation;
+import com.spring.service.CarService;
 import com.spring.service.ReservationService;
 import com.spring.validator.ResValidator;
 
@@ -20,6 +21,9 @@ public class ReservationController {
 	
 	@Autowired
 	ReservationService resService;
+	
+	@Autowired
+	CarService carService;
 	
 	@Autowired
 	ResValidator resValidator;
@@ -43,6 +47,7 @@ public class ReservationController {
 			System.out.println("invalid");
 			return "redirect:/showcar";
 		} else {
+		carService.updateCarYes(res.getCar_id());
 		resService.setReservation(res);
 		return "congrats";
 		}
